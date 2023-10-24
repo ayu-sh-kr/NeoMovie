@@ -6,7 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "dev.arhimedes")
 public class NeoMovieApplication implements CommandLineRunner {
 
     private final ActorRepository actorRepository;
@@ -21,13 +21,16 @@ public class NeoMovieApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Actor tomHanks = actorRepository.findById("Tom Hanks").get();
-        tomHanks.movies.forEach(System.out::println);
-
-        Actor taylorHackford = actorRepository.findById("Taylor Hackford").get();
-        System.out.println("Directed in:-");
-        taylorHackford.movieList.forEach(System.out::println);
-        System.out.println("Acted in:-");
-        taylorHackford.movies.forEach(System.out::println);
+//        Actor tomHanks = actorRepository.findById("Tom Hanks").get();
+//        tomHanks.movies.forEach(System.out::println);
+//
+//        Actor taylorHackford = actorRepository.findById("Taylor Hackford").get();
+//        System.out.println("Directed in:-");
+//        taylorHackford.directedIn.forEach(System.out::println);
+//        System.out.println("Acted in:-");
+//        taylorHackford.movies.forEach(System.out::println);
+//
+//        System.out.println();
+//        actorRepository.findAllByBorn(1943).forEach(System.out::println);
     }
 }
