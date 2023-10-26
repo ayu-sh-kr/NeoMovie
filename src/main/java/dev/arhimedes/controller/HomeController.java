@@ -10,4 +10,9 @@ public class HomeController {
     public String getIndex(){
         return "index";
     }
+
+    @GetMapping("/movie")
+    public String getMoviePage(){
+        return "movie";
+    }
 }

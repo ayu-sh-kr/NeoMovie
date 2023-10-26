@@ -63,13 +63,15 @@ function initiateSearch(){
             }else if(text.checked){
                 data.forEach(value => {
                     const markup = `<div class="container text-xl shadow-green-300
-                        shadow-md rounded-md p-3 mx-2 my-4 text-center w-[250px]">${value.name}</div>`;
+                        shadow-md rounded-md mx-2 my-4 text-center w-[250px]"><a href="/movie" class="
+                        w-full py-3 px-4 rounded-md no-underline ">${value.name}</a></div>`;
                     resultBox.insertAdjacentHTML("beforeend", markup);
                 })
             }
             else if(name.checked){
                 const markup = `<div class="container text-xl shadow-green-300
-                        shadow-md rounded-md p-3 mx-2 my-4 text-center w-[250px]">${data.name}</div>`;
+                        shadow-md rounded-md mx-2 my-4 text-center w-[250px]"><a href="/movie" th:href="@{/movie}" class="
+                        w-full px-4 py-3 rounded-md no-underline ">${data.name}</a></div>`;
                 if(data.name === undefined){
                     resultBox.innerText = "Not Found";
                 }
@@ -78,5 +80,7 @@ function initiateSearch(){
                 }
             }
         })
-        .catch()
+        .catch((error) => {
+            console.log("Error From: " + error);
+        })
 }

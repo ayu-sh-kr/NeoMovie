@@ -23,4 +23,6 @@ public interface ActorRepository extends Neo4jRepository<Actor, String> {
             "WHERE n.name STARTS WITH $name " +
             "RETURN n, collect(m), collect(r)")
     List<Actor> getActorByNameStartsWith(@PathVariable("name") String name);
+
 }
+

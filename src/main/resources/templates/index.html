@@ -39,15 +39,15 @@ my-4 justify-between bg-transparent shadow-md shadow-green-300 min-w-[350px]">
 <!--Search box for searching-->
 <div class="container mx-auto sm:w-full shadow-green-300 py-3 px-2 shadow-md rounded-md text-xl sm:block w-[350px]">
     <form action="#" method="get">
-        <div class="sm:flex w-full sm:justify-between">
+        <div class="flex w-full sm:justify-between sm:flex-row flex-col gap-y-5 gap-x-1">
             <div class="text-center px-4 py-1 bg-blue-400 rounded-md text-white hover:bg-blue-500 w-full sm:w-1/6">
                 <button onclick="showFilters()" class="w-full">Filters</button>
             </div>
             <div class="w-full">
-                <input type="text" class="focus:ring-4 focus:ring-blue-300 rounded-md focus:outline-none bg-gray-100 border-1 border-gray-300 w-full py-1 mx-0.5"
+                <input type="text" class="focus:ring-4 focus:ring-blue-300 rounded-md focus:outline-none bg-gray-100 border-1 border-gray-300 w-full py-1 mx-0.5 capitalize"
                        id="search-input" onkeyup="initiateSearch()" >
             </div>
-            <div class="bg-green-300 px-4 py-1 rounded-md mx-0.5 hover:bg-green-500 text-white w-full text-center sm:w-1/6">
+            <div class="bg-green-300 px-4 py-1 rounded-md mx-auto hover:bg-green-500 text-white w-full text-center md:w-1/6">
                 <button onclick="initiateSearch()" class="w-full">Search</button>
             </div>
         </div>
@@ -73,7 +73,7 @@ my-4 justify-between bg-transparent shadow-md shadow-green-300 min-w-[350px]">
     </div>
 </div>
 
-<div class="container mx-auto w-full shadow-md shadow-green-300 grid grid-cols-3 gap-2" id="result-box">
+<div class="container mx-auto w-full shadow-md shadow-green-300 grid md:grid-cols-3 sm:grid-cols-2 gap-2 grid-cols-1 place-content-center" id="result-box">
 
 </div>
 </body>
