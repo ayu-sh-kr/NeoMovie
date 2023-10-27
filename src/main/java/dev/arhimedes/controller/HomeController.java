@@ -15,4 +15,13 @@ public class HomeController {
     public String getMoviePage(){
         return "movie";
     }
+
+    @GetMapping("/login")
+    public String getLogin(){
+        return "login";
+    }
+    @GetMapping("/register")
+    public String getRegister(){
+        return "register";
+    }
 }
