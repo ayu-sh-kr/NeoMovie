@@ -5,19 +5,28 @@
     <title>Log in</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="output.css">
-    <link rel="stylesheet" href="/static/output.css">
+<!--    <link rel="stylesheet" href="/static/output.css">-->
 </head>
 <body>
-<section class="bg-gray-50 min-h-screen flex items-center justify-center">
+<section class="bg-gray-50 min-h-screen flex items-center justify-center relative">
+    <div class="bg-gray-50 px-4 py-3 absolute left-0 top-1">
+        <h1 class="text-3xl font-bold text-purple-900 font-serif">NeoMovie</h1>
+    </div>
     <!-- login container -->
     <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
+
         <!-- form -->
         <div class="md:w-1/2 px-8 md:px-16">
             <h2 class="font-bold text-2xl text-[#002D74]">Login</h2>
             <p class="text-xs mt-4 text-[#002D74]">If you are already a member, easily log in</p>
-
-            <form action="" class="flex flex-col gap-4">
-                <input class="p-2 mt-8 rounded-xl focus:ring-4 ring-blue-300 focus:outline-none" type="email" name="email" placeholder="Email">
+            <form th:action="@{/login}" method="post" class="flex flex-col gap-4">
+                <div th:if="${param.failure}" class="text-black bg-red-400 p-1 rounded-md">
+                    Invalid username and password.
+                </div>
+                <div th:if="${param.logout}" class="text-black bg-green-200 p-1 rounded-md">
+                    You have been logged out.
+                </div>
+                <input class="p-2 mt-8 rounded-xl focus:ring-4 ring-blue-300 focus:outline-none" type="text" name="username" placeholder="Email">
                 <div class="relative">
                     <input class="p-2 rounded-xl w-full ring-blue-300 focus:outline-none focus:ring-4" type="password" name="password" placeholder="Password">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" class="bi bi-eye absolute top-1/2 right-3 -translate-y-1/2" viewBox="0 0 16 16">
@@ -25,7 +34,7 @@
                         <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                     </svg>
                 </div>
-                <button class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">Login</button>
+                <button class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300" value="Log in" type="submit">Login</button>
             </form>
 
             <div class="mt-6 grid grid-cols-3 items-center text-gray-400">
@@ -60,8 +69,6 @@
         </div>
     </div>
 </section>
-<script>
-</script>
 </body>
 </html>
 <!--src="https://images.unsplash.com/photo-1616606103915-dea7be788566?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"-->
