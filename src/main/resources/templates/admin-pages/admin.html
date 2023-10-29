@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NeoMovie | Admin</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="/static/output.css">
+</head>
+<header>
+    <div class="container h-10 w-full mx-auto shadow-2xl rounded-md flex
+my-4 justify-between bg-transparent shadow-md shadow-green-300 min-w-[350px]">
+        <div class="text-2xl text-center mx-4 font-semibold text-green-900">NeoMovie</div>
+        <div class="space-x-4 text-center justify-between sm:flex hidden">
+            <a href="#" class="text-2xl font-light hover:text-xl hover:font-semibold p-1 hover:p-1 rounded-md">Home</a>
+            <a href="#" class="text-2xl font-light hover:text-xl hover:font-semibold p-1 hover:p-1 rounded-md">Product</a>
+            <a href="#" class="text-2xl font-light hover:text-xl hover:font-semibold p-1 hover:p-1 rounded-md">Services</a>
+            <a href="/logout" class="text-2xl font-light hover:text-xl hover:font-semibold p-1 hover:p-1 rounded-md">Logout</a>
+        </div>
+
+        <div class="sm:hidden block">
+            <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" value="" class="sr-only peer" onclick="show()">
+                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Toggle me</span>
+            </label>
+        </div>
+    </div>
+    <div class="relative w-full mx-auto mb-4">
+        <div class="flex flex-col gap-2 mx-2 sm:hidden absolute right-0 text-center z-50 hidden w-[250px]" id="toggle">
+            <a href="#" class="bg-white text-2xl font-light hover:text-xl p-1 hover:p-1 hover:font-semibold rounded-md block container shadow-md shadow-green-300">Home</a>
+            <a href="#" class="bg-white text-2xl font-light hover:text-xl p-1 hover:p-1 hover:font-semibold rounded-md block container shadow-md shadow-green-300">Product</a>
+            <a href="#" class="bg-white text-2xl font-light hover:text-xl p-1 hover:p-1 hover:font-semibold rounded-md block container shadow-md shadow-green-300">Services</a>
+            <a href="#" class="bg-white text-2xl font-light hover:text-xl p-1 hover:p-1 hover:font-semibold rounded-md block container shadow-md shadow-green-300">Contact Us</a>
+        </div>
+    </div>
+</header>
+<body class="bg-gray-50" onload="getData()">
+<div id="dashboard" class="container mx-auto flex justify-between p-2 font-bold text-xl">
+    <div>
+        <a href="#">Active User: </a>
+        <span id="activeUser" class="text-green-300">00</span>
+    </div>
+    <div>
+        <a href="#" onclick="getUsers()">Total User: </a>
+        <span id="totalUser" class="text-blue-400">00</span>
+    </div>
+    <div>
+        <a href="#">Managers: </a>
+        <span id="managers" class="text-red-500">00</span>
+    </div>
+</div>
+
+<div id="dataTable" class="container mx-auto px-4 py-3">
+
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                    User name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Email
+                </th>
+                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                    Roles
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Joined On
+                </th>
+            </tr>
+            </thead>
+            <tbody id="entryPoint">
+
+<!--            <tr class="border-b border-gray-200 dark:border-gray-700">-->
+<!--                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">-->
+<!--                    Magic Mouse 2-->
+<!--                </th>-->
+<!--                <td class="px-6 py-4">-->
+<!--                    Black-->
+<!--                </td>-->
+<!--                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">-->
+<!--                    Accessories-->
+<!--                </td>-->
+<!--                <td class="px-6 py-4">-->
+<!--                    $99-->
+<!--                </td>-->
+<!--            </tr>-->
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+<script src="/javascript/index.js"></script>
+<script src="/static/javascript/index.js"></script>
+<script src="/static/javascript/admindashboard.js"></script>
+<script src="/javascript/admindashboard.js"></script>
+</body>
+</html>
