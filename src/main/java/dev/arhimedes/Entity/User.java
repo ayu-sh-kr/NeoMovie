@@ -7,7 +7,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Table(name = "user_details")
@@ -16,7 +17,6 @@ import java.util.HashSet;
 @Getter
 @Setter
 @Builder
-@ToString
 @AllArgsConstructor
 public class User {
 
@@ -26,7 +26,14 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private HashSet<Authority> authorityCollection = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
+    )
+    private List<Role> roles = new ArrayList<>();
     @CreationTimestamp
     private LocalDateTime createdOn;
     @UpdateTimestamp
@@ -37,7 +44,20 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.authorityCollection.add(Authority.USER);
+        this.roles.add(new Role());
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
+
+    public void addRole(String role) {
+        this.roles.add(new Role(role));
+    }
 }
