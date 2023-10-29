@@ -24,4 +24,9 @@ public class HomeController {
     public String getRegister(){
         return "register";
     }
+
+    @GetMapping("/admin")
+    public String getAdmin(){
+        return "/admin-pages/admin";
+    }
 }
