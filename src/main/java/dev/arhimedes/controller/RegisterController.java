@@ -43,11 +43,6 @@ public class RegisterController {
         return new ResponseEntity<>("Some error occurred", HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("/admin")
-    public String getAdminPage(){
-        return "<h1>Hello Admin</h1>";
-    }
-
     @GetMapping("/user")
     public String getUserPage(){
         return "<h1>Hello User</h1>";
