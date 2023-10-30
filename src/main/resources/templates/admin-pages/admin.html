@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>NeoMovie | Admin</title>
     <link rel="stylesheet" href="output.css">
-    <link rel="stylesheet" href="/static/output.css">
+<!--    <link rel="stylesheet" href="/static/output.css">-->
 </head>
 <header>
     <div class="container h-10 w-full mx-auto shadow-2xl rounded-md flex
@@ -37,15 +37,15 @@ my-4 justify-between bg-transparent shadow-md shadow-green-300 min-w-[350px]">
 <body class="bg-gray-50" onload="getData()">
 <div id="dashboard" class="container mx-auto flex justify-between p-2 font-bold text-xl">
     <div>
-        <a href="#">Active User: </a>
+        <a href="#" onclick="getUsers('activeUsers')">Active User: </a>
         <span id="activeUser" class="text-green-300">00</span>
     </div>
     <div>
-        <a href="#" onclick="getUsers()">Total User: </a>
+        <a href="#" onclick="getUsers('totalUsers')">Total User: </a>
         <span id="totalUser" class="text-blue-400">00</span>
     </div>
     <div>
-        <a href="#">Managers: </a>
+        <a href="#" onclick="getUsers('managers')">Managers: </a>
         <span id="managers" class="text-red-500">00</span>
     </div>
 </div>
@@ -67,6 +67,9 @@ my-4 justify-between bg-transparent shadow-md shadow-green-300 min-w-[350px]">
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Joined On
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Active
                 </th>
             </tr>
             </thead>
@@ -94,8 +97,8 @@ my-4 justify-between bg-transparent shadow-md shadow-green-300 min-w-[350px]">
 </div>
 
 <script src="/javascript/index.js"></script>
-<script src="/static/javascript/index.js"></script>
-<script src="/static/javascript/admindashboard.js"></script>
-<script src="/javascript/admindashboard.js"></script>
+<!--<script src="/static/javascript/index.js"></script>-->
+<script src="/javascript/adminDashboard.js"></script>
+<!--<script src="/javascript/adminDashboard.js"></script>-->
 </body>
 </html>
