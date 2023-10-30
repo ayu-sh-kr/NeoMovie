@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile | Admin</title>
+    <link rel="stylesheet" href="/output.css">
+    <link rel="stylesheet" href="/static/output.css">
+</head>
+<body onload="setActiveUserData()" id="body">
+<div class="container w-full mx-auto py-3 px-4 flex justify-between relative">
+    <div class="container px-4 py-3 w-1/3">
+        <h1 class="font-bold text-purple-900 text-3xl rounded-full w-10 h-10 ring-4 ring-gray-400 text-center" id="userLogo">L</h1>
+    </div>
+    <div class="container mx-auto bg-white shadow-md px-4 py-3 sm:flex hidden border rounded-2xl justify-between sm:w-2/3 w-1/3 items-center">
+        <a href="/admin" class="font-bold mx-2 px-2 py-2 rounded-md hover:text-blue-400 sm:block block" >Home</a>
+        <a href="#"  class="font-bold mx-2 px-2 py-2 rounded-md hover:text-blue-400 sm:block block">Menu</a>
+        <a href="#"  class="font-bold mx-2 px-2 py-2 rounded-md hover:text-blue-400 sm:block block">Services</a>
+        <a href="/logout"  class="font-bold mx-2 px-2 py-2 rounded-md hover:text-blue-400 sm:block block">Logout</a>
+    </div>
+    <div class="container px-4 py-3 w-1/3">
+        <h1 class="w-full text-right font-bold text-xl">Data</h1>
+    </div>
+</div>
+
+<div class="container mx-auto w-full px-3 py-4 shadow-md">
+    <div class="w-full py-2  text-2xl rounded-md px-4 text-blue-400 bg-gray-200" id="userId">id:</div>
+    <table class="w-full text-gray-500 text-left text-sm mt-4 px-4">
+        <thead class="text-gray-700 uppercase bg-gray-50 text-lg w-full">
+        <tr>
+            <th class="px-6 py-3 rounded-l-lg" scope="col">Value</th>
+            <th class="px-6 py-3 rounded-l-lg" scope="col">Details</th>
+            <th class="px-6 py-3 rounded-l-lg" scope="col">Action</th>
+        </tr>
+        </thead>
+        <tr class="bg-white border-b hover:bg-gray-50 font-bold">
+            <td class="px-6 py-3 rounded-l-lg w-1/3">Name</td>
+            <td class="px-6 py-3 rounded-l-lg w-1/3" id="username">Text
+            </td>
+            <td class="px-6 py-3 rounded-l-lg text-blue-600 w-1/3 flex space-x-8">
+                <input type="text" id="setName" class="px-4 py-2 focus:ring-4 focus:outline-none
+                rounded-md bg-gray-100 border" disabled>
+            </td>
+        </tr>
+        <tr class="bg-white border-b hover:bg-gray-50 w-1/3 font-bold">
+            <td class="px-6 py-3 rounded-l-lg w-1/3">Email</td>
+            <td class="px-6 py-3 rounded-l-lg w-1/3" id="email">Text
+            </td>
+            <td class="px-6 py-3 rounded-l-lg text-blue-600 w-1/3 flex space-x-8">
+                <input type="text" id="setEmail" class="px-4 py-2 focus:ring-4
+                focus:outline-none rounded-md bg-gray-100 border" disabled>
+            </td>
+        </tr>
+        <tr class="bg-white border-b hover:bg-gray-50 w-1/3 font-bold">
+            <td class="px-6 py-3 rounded-l-lg w-1/3">Account Status</td>
+            <td class="px-6 py-3 rounded-l-lg w-1/3" id="accountStatus">Text
+            </td>
+            <td class="px-6 py-3 rounded-l-lg text-blue-600 w-1/3 flex space-x-8">
+                <input type="text" id="setAccountStatus" class="px-4 py-2 focus:ring-4 focus:outline-none
+                    rounded-md bg-gray-100 border" disabled>
+            </td>
+        </tr>
+        <tr class="bg-white border-b hover:bg-gray-50 w-full font-bold">
+            <td class="px-6 py-3 rounded-l-lg w-1/3">Created On</td>
+            <td class="px-6 py-3 rounded-l-lg w-1/3"  id="createdOn"></td>
+            <td class="px-6 py-3 rounded-l-lg text-blue-600 w-1/3" ></td>
+        </tr>
+        <tr class="bg-white border-b hover:bg-gray-50 w-full font-bold">
+            <td class="px-6 py-3 rounded-l-lg w-1/3" >Roles</td>
+            <td class="px-6 py-3 rounded-l-lg w-1/3" id="roles">Text
+            </td>
+            <td class="px-6 py-3 rounded-l-lg text-blue-600 w-1/3 flex space-x-8" >
+                <input type="text" id="setRoles" class="px-4 py-2 focus:ring-4 focus:outline-none rounded-md
+                bg-gray-100 border" placeholder="Enter space separated roles" disabled>
+            </td>
+        </tr>
+    </table>
+    <div class="w-full px-3 py-4 flex justify-end">
+        <div class="flex space-x-8">
+            <button class="bg-blue-500 px-5 py-1 rounded-md text-white text-lg" onclick="loadDataToEdit()">Edit</button>
+            <button class="bg-red-400 px-5 py-1 rounded-md text-white text-lg" onclick="updateDataToFront()">Save</button>
+            <button class="bg-green-400 px-3 py-1 rounded-md text-white text-lg" onclick="updateUser()">Upload</button>
+        </div>
+    </div>
+</div>
+<script src="/javascript/adminUserManager.js"></script>
+<script src="/javascript/toast.js"></script>
+<script src="/javascript/userEditManager.js"></script>
+<!--<script src="/static/javascript/adminUserManager.js"></script>-->
+<!--<script src="/static/javascript/userEditManager.js"></script>-->
+
+</body>
+</html>
