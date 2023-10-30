@@ -29,4 +29,9 @@ public class HomeController {
     public String getAdmin(){
         return "/admin-pages/admin";
     }
+
+    @GetMapping("/admin/userProfile")
+    public String getUserprofile(){
+        return "/admin-pages/userProfile";
+    }
 }
