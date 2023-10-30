@@ -15,8 +15,10 @@ import java.util.List;
 @Getter
 @Setter
 public class AdminFrontUserDTO implements Serializable {
+    private Long id;
     private String name;
     private String email;
     private List<Role> roleList;
     private LocalDateTime createdOn;
+    private boolean isActive;
 }
