@@ -39,12 +39,16 @@ public class User {
     @UpdateTimestamp
     private LocalDateTime updatedOn;
 
+    @Column(name = "account_active")
+    private boolean isAccountActive;
+
 
     public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.roles.add(new Role());
+        this.isAccountActive = false;
     }
 
     @Override
@@ -58,6 +62,29 @@ public class User {
     }
 
     public void addRole(String role) {
-        this.roles.add(new Role(role));
+        if(isValidRole(role)){
+            if(!roleExist(role)){
+                this.roles.add(new Role(role));
+            }
+        }
+    }
+
+    public boolean roleExist(String role){
+        for(Role role1: this.roles){
+            if(role1.getName().equals(role)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isValidRole(String role){
+       try {
+           Authority.valueOf(role);
+           return true;
+       }catch (Exception exception){
+           System.out.println(exception.getMessage());
+           return false;
+       }
     }
 }
