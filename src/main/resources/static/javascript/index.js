@@ -57,7 +57,6 @@ function initiateSearch(){
             return res.json();
         })
         .then(data => {
-            console.log(data);
             if(data.length === 0){
                 resultBox.innerText = "Found nothing for that query"
             }else if(text.checked){

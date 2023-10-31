@@ -1,13 +1,11 @@
 package dev.arhimedes;
 
-import dev.arhimedes.Entity.Actor;
 import dev.arhimedes.repository.ActorRepository;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = "dev.arhimedes")
-public class NeoMovieApplication implements CommandLineRunner {
+public class NeoMovieApplication{
 
     private final ActorRepository actorRepository;
 
@@ -19,18 +17,4 @@ public class NeoMovieApplication implements CommandLineRunner {
         SpringApplication.run(NeoMovieApplication.class, args);
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-//        Actor tomHanks = actorRepository.findById("Tom Hanks").get();
-//        tomHanks.movies.forEach(System.out::println);
-//
-//        Actor taylorHackford = actorRepository.findById("Taylor Hackford").get();
-//        System.out.println("Directed in:-");
-//        taylorHackford.directedIn.forEach(System.out::println);
-//        System.out.println("Acted in:-");
-//        taylorHackford.movies.forEach(System.out::println);
-//
-//        System.out.println();
-//        actorRepository.findAllByBorn(1943).forEach(System.out::println);
-    }
 }

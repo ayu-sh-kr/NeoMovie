@@ -4,16 +4,13 @@ const managers = document.getElementById('managers');
 const entryPoint = document.getElementById('entryPoint');
 function getData(){
     let url = "http://localhost:8080/admin/dashboardData"
-    console.log("data loading..")
     setData(url);
 }
 
 function setData(uri){
-    console.log(uri);
     fetch(uri)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             totalUser.innerText = data["Total User"];
             activeUser.innerText = data["Active User"];
             managers.innerText = data["Managers"];
@@ -36,9 +33,8 @@ function fetchUsers(uri){
     fetch(uri)
         .then(response => response.json())
         .then(data => {
-            // console.log(data);
             data.forEach(value => {
-                role = getRoles(value.roleList);
+                const role = getRoles(value.roleList);
                 const component =  `<tr class="border-y border-gray-200 dark:border-gray-700">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                     <a href="/admin/userProfile?email=${value.email}">${value.name}</a></th>
@@ -56,7 +52,6 @@ function fetchUsers(uri){
 function getRoles(value){
     str = '';
     for(let i = 0; i < value.length; i++){
-        // console.log(value[i].name);
         str += value[i].name + ' ';
     }
     return str;

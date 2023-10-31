@@ -1,13 +1,14 @@
 const nameuser = document.getElementById('username');
 const emailUser = document.getElementById('email');
 const activeStatus = document.getElementById('accountStatus');
-// const createdOn = document.getElementById('createdOn');
 const userRoles = document.getElementById('roles');
 
 const nameInput = document.getElementById('setName');
 const emailInput = document.getElementById('setEmail');
 const statusInput = document.getElementById('setAccountStatus');
 const roleInput = document.getElementById('setRoles');
+
+const saveBtn = document.getElementById('save');
 
 function loadDataToEdit(){
     console.log('editing')
@@ -42,6 +43,7 @@ function disableInput(){
     emailInput.disabled = true;
     statusInput.disabled = true;
     roleInput.disabled = true;
+    saveBtn.disabled = true;
 }
 
 function enableInput(){
@@ -49,4 +51,5 @@ function enableInput(){
     emailInput.disabled = false;
     statusInput.disabled = false;
     roleInput.disabled = false;
+    saveBtn.disabled = false;
 }
