@@ -2,31 +2,38 @@ package dev.arhimedes.controller;
 
 import dev.arhimedes.Entity.User;
 import dev.arhimedes.dto.RegistrationRequest;
+import dev.arhimedes.repository.EmailVerificationRepository;
 import dev.arhimedes.repository.UserRepository;
+import dev.arhimedes.service.MailVerificationService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @Slf4j
+@RequestMapping("/register")
 public class RegisterController {
 
-    @Autowired
-    private PasswordEncoder encoder;
+    private final PasswordEncoder encoder;
 
     private final UserRepository repository;
 
-    public RegisterController(UserRepository repository) {
+    private final EmailVerificationRepository emailVerificationRepository;
+
+    private final MailVerificationService mailVerificationService;
+
+    public RegisterController(UserRepository repository, PasswordEncoder encoder, EmailVerificationRepository emailVerificationRepository, MailVerificationService mailVerificationService) {
         this.repository = repository;
+        this.encoder = encoder;
+        this.emailVerificationRepository = emailVerificationRepository;
+        this.mailVerificationService = mailVerificationService;
     }
 
-    @PostMapping("/register")
+    @PostMapping("")
     public ResponseEntity<?> registerUser(@RequestBody RegistrationRequest registrationRequest){
         log.info(registrationRequest.toString());
         if(registrationRequest != null){
@@ -42,6 +49,31 @@ public class RegisterController {
         }
         return new ResponseEntity<>("Some error occurred", HttpStatus.BAD_REQUEST);
     }
+
+    @PostMapping("/emailVerification")
+    public ResponseEntity<?> emailVerification(@RequestBody Map<String, String> verificationToken){
+        int token = Integer.parseInt(verificationToken.get("token"));
+        String email = verificationToken.get("email");
+
+        if(emailVerificationRepository.findTokenByEmail(email).isPresent()
+                && emailVerificationRepository.findByEmail(email).get().isNotExpired()
+                && emailVerificationRepository.findTokenByEmail(email).get() == token){
+            // verify account once email is verified
+
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>(HttpStatus.CONFLICT);
+    }
+
+    @PostMapping("/getVerificationToken")
+    public ResponseEntity<?> getToken(@RequestBody Map<String, String> map){
+        if(map.get("email") != null){
+            mailVerificationService.sendMail(map.get("email"));
+            return new ResponseEntity<>("Verified Successfully", HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
 
     @GetMapping("/user")
     public String getUserPage(){
